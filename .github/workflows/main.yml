@@ -14,7 +14,7 @@ jobs:
                 echo "::error:: Mensagem de Log error > erro executado por: ${{github.actor}}"
             - name: Logs Agrupados
               run: |
-                echo "::ggoupr:: Grupo de Logs"
+                echo "::group:: Grupo de Logs"
                 echo: "Info 1"
                 echo: "Info 2"
                 echo: "Info 3"

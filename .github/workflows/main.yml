@@ -5,7 +5,7 @@ jobs:
     build-test:
         runs-on: ubuntu-latest
         container:
-          image: 3.10.14-alpine3.20
+          image: python:3.10.14-alpine3.20
         steps:
             - name: Checkout
               uses: actions/checkout@v4

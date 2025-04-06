@@ -1,0 +1,41 @@
+name: deploy
+on:
+    workflow_call:
+        inputs:
+            manifests:
+                type: string
+                required: true
+                description: "Manifests to deploy k8s"
+            images:
+                type: string
+                required: true
+                description: "Image to build in manifest"
+            enviroment:
+                type: string
+                required: true
+                description: "Environment to use"
+jobs:
+    deploy-k8s:
+        runs-on: ubuntu-latest
+        environment: ${{ inputs.enviroment }}
+        steps:
+            - name: Get code
+              run: echo "Estou baixando o código do github"
+         #   uses: actions/checkout@v4.1.5
+            - name: Config context K8s
+              run: echo "estou entrando no contexto do K8s e conectando no cluster com ${{ secrets.K8S_CONFIG }}"
+            #   uses: azure/k8s-set-context@v4.0.0
+            #   with:
+            #     method: kubeconfig
+            #     kubeconfig: ${{ secrets.K8S_CONFIG }}
+            - name: Execute manifest
+              run: echo "estou executando o manifest ${{ toJson(inputs.manifests) }}"
+            - name: View image
+              run: echo " ${{ inputs.images }}"
+            - name: View image
+              run: echo " ${{ vars.APP_NAMESPACR }}"
+            #   uses: Azure/k8s-deploy@v5
+            #   with:
+            #     manifests: ${{ inputs.manifests }}
+            #     images: ${{ inputs.images }}
+            #     namespaces: ${{ vars.APP_NAMESPACR }}

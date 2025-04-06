@@ -1,0 +1,26 @@
+# name: CI/CD Fake
+# on: 
+#     workflow_dispatch:  
+# jobs:
+#     deploy-fake-homolog:
+#         runs-on: ubuntu-latest
+#         environment:
+#             name: homolog
+#             url: "http://homologacao.devopspro.com.br"
+#         steps:
+#             - name: Build de Imagem Docker
+#               run: echo "Deployão no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
+#     teste-fake:
+#         runs-on: ubuntu-latest
+#         environment: homolog
+#         needs: [deploy-fake-homolog]
+#         steps:
+#             - name: Build de Imagem Docker
+#               run: echo "Teste no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
+#     deploy-fake-producao:
+#         runs-on: ubuntu-latest
+#         environment: production
+#         needs: [teste-fake]
+#         steps:
+#             - name: Build de Imagem Docker
+#               run: echo "Deploy prod no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"

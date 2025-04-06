@@ -1,0 +1,25 @@
+name: Work Flow Evento
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        permissions:
+          issues: write
+          pull-requests: write
+        steps:
+            - name: Add function
+              run: |
+                echo "::notice:: Teste action"
+            - name: Action de teste
+              uses: actions/github-script@v6
+              with:
+                script: |
+                  github.rest.issues.createComment({
+                    issue_number: context.issue.number,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: 'add comentário no pr'
+                  })

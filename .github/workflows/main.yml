@@ -4,20 +4,20 @@ on:
 jobs:
     deploy-fake-homolog:
         runs-on: ubuntu-latest
-        environment: homolog
+        environment: production
         steps:
             - name: Build de Imagem Docker
               run: echo "Deployão no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
     teste-fake:
         runs-on: ubuntu-latest
-        environment: homolog
+        environment: production
         needs: [deploy-fake-homolog]
         steps:
             - name: Build de Imagem Docker
               run: echo "Teste no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
     deploy-fake-producao:
         runs-on: ubuntu-latest
-        environment: homolog
+        environment: production
         needs: [teste-fake]
         steps:
             - name: Build de Imagem Docker

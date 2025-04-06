@@ -4,7 +4,9 @@ on:
 jobs:
     deploy-fake-homolog:
         runs-on: ubuntu-latest
-        environment: homolog
+        environment:
+            name: homolog
+            url: "http://homologacao.devopspro.com.br"
         steps:
             - name: Build de Imagem Docker
               run: echo "Deployão no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"

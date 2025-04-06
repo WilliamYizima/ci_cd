@@ -51,5 +51,4 @@ jobs:
       images: |
           abricioveronez/aula-primeira-pipeline:v${{ github.run_number }}
       environment: production
-      secrets:
-            inherit
+    secrets: inherit

@@ -10,14 +10,14 @@ on:
                 type: string
                 required: true
                 description: "Image to build in manifest"
-            enviroment:
+            environment:
                 type: string
                 required: true
                 description: "Environment to use"
 jobs:
     deploy-k8s:
         runs-on: ubuntu-latest
-        environment: ${{ inputs.enviroment }}
+        environment: ${{ inputs.environment }}
         steps:
             - name: Get code
               run: echo "Estou baixando o código do github"

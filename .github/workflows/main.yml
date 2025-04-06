@@ -15,9 +15,9 @@ jobs:
             - name: Logs Agrupados
               run: |
                 echo "::group:: Grupo de Logs"
-                echo: "Info 1"
-                echo: "Info 2"
-                echo: "Info 3"
-                echo: "Info 4"
-                echo: "Info quem fez: ${{ github.actor }}"
+                echo "Info 1"
+                echo "Info 2"
+                echo "Info 3"
+                echo "Info 4"
+                echo "Info quem fez: ${{ github.actor }}"
                 echo "::endgroup::"

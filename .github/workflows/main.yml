@@ -1,0 +1,10 @@
+name: CI/CD Fake
+on: 
+    workflow_dispatch:  
+jobs:
+    CI:
+        runs-on: ubuntu-latest
+        environment: homolog
+        steps:
+            - name: Build de Imagem Docker
+              run: echo "Execução no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"

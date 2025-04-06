@@ -12,3 +12,12 @@ jobs:
                 echo "::warning:: Mensagem de Log warning"
                 echo "::notice:: Mensagem de Log notice"
                 echo "::error:: Mensagem de Log error > erro executado por: ${{github.actor}}"
+            - name: Logs Agrupados
+              run: |
+                echo "::ggoupr:: Grupo de Logs"
+                echo: "Info 1"
+                echo: "Info 2"
+                echo: "Info 3"
+                echo: "Info 4"
+                echo: "Info quem fez: ${{ github.actor }}"
+                echo "::endgroup::"

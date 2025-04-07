@@ -1,0 +1,25 @@
+# name: Teste Action
+# on:
+#   issues:
+#     types: [opened]
+#   pull_request:
+#     types: [opened]
+
+# jobs:
+#   teste-action-job:
+#     permissions:
+#       issues: write
+#       pull-requests: write
+#     runs-on: ubuntu-latest
+#     name: Execucao de action
+#     steps:
+#       - name: Adicionando comentário
+#         id: comment_step
+#         uses: WilliamYizima/action-js@main
+#         with:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           issue-id: ${{ github.event.issue.number }}
+#           comment: "comentário teste qualquer!!<<<<<"
+#       - name: mostrar o id do comentario
+#         run: |
+#           echo "id do comentário é: ${{ steps.comment_step.outputs.comment-id }}"

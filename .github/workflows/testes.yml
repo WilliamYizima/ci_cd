@@ -1,0 +1,36 @@
+name: Execucao de testes
+
+on:
+    workflow_call:
+
+jobs:
+    unit-test:
+        name: Teste de unidade
+        runs-on: ubuntu-latest
+        steps:
+            - name: Obtendo codigo do projeto
+              uses: actionscheckout@v4
+            - name: Setup ambiente
+              run: echo "fiz o setup"
+            - name: Execucao do teste
+              run: echo "execucao dos testes"
+    
+    integrations-test:
+        name: teste de integracao
+        runs-on: ubuntu-latest
+        services:
+            postgre:
+                image: postgre:latest
+                ports:
+                    - 5432:5432
+                env:
+                    POSTGRES_USER: review
+                    POSTGRES_PASSWORD: postgrespwd
+                    POSTGRES_DB: review
+        steps:
+            - name: obtendo o codigo
+              uses: actions/checkout@v4
+            - name: setup inicial
+              run: echo "buildando no ambiente"
+
+                

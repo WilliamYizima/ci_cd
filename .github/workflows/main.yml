@@ -1,25 +1,47 @@
-name: Teste Action
-on:
-  issues:
-    types: [opened]
-  pull_request:
-    types: [opened]
+name: Pipeline CI/CD
+run-name: Pipeline CI/CD executada por ${{ github.actor }} em ${{ github.run_number }}
 
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
 jobs:
-  teste-action-job:
-    permissions:
-      issues: write
-      pull-requests: write
-    runs-on: ubuntu-latest
-    name: Execucao de action
-    steps:
-      - name: Adicionando comentário
-        id: comment_step
-        uses: WilliamYizima/action-js@main
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          issue-id: ${{ github.event.issue.number }}
-          comment: "comentário teste qualquer!!<<<<<"
-      - name: mostrar o id do comentario
-        run: |
-          echo "id do comentário é: ${{ steps.comment_step.outputs.comment-id }}"
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Obtendo o código do projeto
+              uses: actions/checkout@v4
+            - name: setup do ambiente
+            #   uses
+              run: echo "instalando meu env para isso"
+            - name: Execucao do comando build
+              run: echo "comando para buildar o código"
+    testes:
+        needs: [build]
+        uses: WilliamYizima/ci_cd/.github/workflows/testes.yml@main
+    
+    release:
+        name: Criacao de release
+        needs: [build, testes]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Obtendo o código do projeto
+              uses: actions/checkout@v4
+            - name: Efetuando o login no docker hub
+              run: echo "logando no docker"
+            #   uses: docker/logi-action@v3
+            #   with:
+            #     username: ${{ secrets.DOCKER_USER }}
+            #     password: ${{ secrets.DOCKER_PASSWORD }}
+            - name: Build e Push da Imagem Dodkcer
+              run: echo "criando o docker e fazendo push"
+            #   uses: docker/build-push-action@v6
+            #   with:
+            #     push: true
+            #     context: ./src
+            #     file: ./src/Dockerfile
+            #     tags: |
+            #       seucaminho/projeto:latest
+            #       seucaminho/projeto:v${{ github.run_number }}

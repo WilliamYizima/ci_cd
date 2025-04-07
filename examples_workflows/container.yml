@@ -1,0 +1,18 @@
+name: Work Flow Evento
+on:
+  workflow_dispatch:
+jobs:
+    build-test:
+        runs-on: ubuntu-latest
+        # container no job
+        # container:
+        #   image: python:3.10.14-alpine3.20
+        steps:
+            - name: Execucao do runner
+              run: cat /etc/os-release
+            # em uma action o container
+            # - name: Execucao no container
+            #   uses: docker://alpine:latest
+            #   with:
+            #     entrypoint: cat
+            #     args: /etc/os-release

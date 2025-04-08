@@ -1,0 +1,20 @@
+# name: Workflow matriz
+# run-name: Exemplo workflow Push Controll - ${{ github.actor }}
+# on:
+#   workflow_dispatch:
+# jobs:
+#     exemplo-fliuxo-execucao01:
+#       strategy:
+#         matrix:
+#           versao: [16, 18, 20]
+#           plataforma: ["windows","ubuntu"]
+#       runs-on: "${{ matrix.plataforma }}-latest"
+#       steps:
+#         - name: Instalacao Node
+#           uses: actions/setup-node@v4
+#           with:
+#             node-version: ${{ matrix.versao }}
+#         - name: Exibicao da versao e da plataforma
+#           run: |
+#             node --version
+#             echo ${{ runner.os }}

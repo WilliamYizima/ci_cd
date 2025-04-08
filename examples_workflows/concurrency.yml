@@ -1,0 +1,35 @@
+# name: Workflow Concorrencia
+# run-name: Exemplo workflow Concorrencia - ${{ github.run_number }}
+# on:
+#   push:
+# concurrency: 
+#     group: ${{ github.ref }}-${{ github.workflow }}
+#     cancel-in-progress: true
+  # workflow_dispatch:
+  #   inputs:
+  #     chave:
+  #       type: string
+  #       default: pipeline-aula
+# essa 'chave' não deixará executar + de um workflow rodar em paralelo (irá esperar)
+# concurrency: ${{ inputs.chave }}
+# jobs:
+#     exemplo-fliuxo-execucao01:
+#       # concurrency: 
+#         # group: ${{ inputs.chave }}
+#         # cancel-in-progress: true
+#       runs-on: ubuntu-latest
+#       steps:
+#         - name: Execucao do job teste
+#           run: |
+#             sleep 50;
+#             echo "Action executada job 01"
+
+#     exemplo-fliuxo-execucao02:
+#       needs: [exemplo-fliuxo-execucao01]      
+#       runs-on: ubuntu-latest
+#       steps:
+#         - name: Execucao do job teste
+#           run: |
+#             sleep 50;
+#             echo "Action executada job 01"
+    

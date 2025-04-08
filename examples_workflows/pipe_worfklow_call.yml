@@ -1,0 +1,34 @@
+# name: CI/CD Fake
+# on: 
+#     workflow_dispatch:  
+      # inputs:
+      #   ambiente:
+      #       type: choice
+      #       default: "dev"
+      #       required: true
+      #       description: "Ambiente onde será feito o deploy"
+      #       options:
+      #         - dev
+      #         - homolog
+      #         - prod
+# jobs:
+#     CI:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Build de Imagem Docker
+#               run: echo "Execução do comando de docker build"
+#             - name: Execução de Testes de Software
+#               run: echo "Aqui eu executo o teste de software"
+#             - name: Publicando a Release
+#               run: echo "Publicação da Relase final"
+#     CD:
+#         needs: [CI]
+#         # uses: WilliamYizima/ci_cd/.github/workflows/deploy.yml@main
+#         uses: WilliamYizima/ci_cd/.github/workflows/repository_dispatch.yml@main
+#         # encamnhando por herança inherit
+#         # secrets: inherit
+#         with:
+#           ambiente: "ambiente"
+#           # ambiente: ${{ inputs.ambiente }}
+#         # secrets:
+#         #   ambiente: ${{ secrets.AMBIENTE_ENTREGA }}

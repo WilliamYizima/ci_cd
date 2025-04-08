@@ -1,0 +1,45 @@
+# name: Workflow eventos
+# run-name: Exemplo workflow Push Controll - ${{ github.actor }}
+# on:
+#   push:
+# jobs:
+#     exemplo-fluxo-err-01:
+#       runs-on: ubuntu-latest
+#       steps:
+#         - name: Vai falhar
+#           run: ls
+#     exemplo-fluxo-done:
+#       runs-on: ubuntu-latest
+#       needs: [exemplo-fluxo-err-01]
+#       if: ${{ failure() }}
+#       steps:
+#         - name: Vai falhar
+#           run: echo "rodou, mesmo com erro"
+#     exemplo-fluxo-done02:
+#       runs-on: ubuntu-latest
+#       steps:
+#         - name: Vai falhar
+#           run: echo "rodou"
+
+    # apenas-main:
+    #   if: ${{ github.ref == 'refs/heads/main' }}
+    #   name: Esse job só executa na branch main
+    #   runs-on: ubuntu-latest
+    #   steps:
+    #     - name: Executando na main
+    #       run: echo "executando comando na main"
+    # todos:
+    #   runs-on: ubuntu-latest
+    #   steps:
+    #     - name: Execucao em feature
+    #       if: ${{ contains(github.ref,'refs/heads/feature') }}
+    #       run: echo "Execucao em feature"
+    #     - name: Execucao em hotfix
+    #       if: ${{ contains(github.ref,'refs/heads/hot-fix') }}
+    #       run: echo "Execucao em hotfix"
+    #     - name: Execucao em main
+    #       if: ${{ github.ref == 'refs/heads/main' }}
+    #       run: ech "Execucao em main"
+    #     - name: envio de erros
+    #       if: ${{ failure() }}
+    #       run: echo "envio de erro"

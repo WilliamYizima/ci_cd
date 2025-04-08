@@ -1,0 +1,75 @@
+# name: Workflow eventos
+# run-name: Exemplo workflow Schedule - ${{ github.actor }}
+# on:
+    # schedule:
+        # - cron: "*/2 * * * *"
+        # github uses utc-0
+        # - cron: "22 23 * * *"
+    # pull_request:
+    #     branches: ["main"]
+    #     types: closed
+    # example workflow_dispatch
+    # workflow_dispatch:
+    #     inputs:
+    #         valor_numerico:
+    #             type: number
+    #             default: 20
+    #         valor_string:
+    #             type: string
+    #             default: "valor qualquer"
+    #         valor_boolean:
+    #             type: boolean
+    #             default: true
+        # inputs:
+        #     exemplo-input:
+        #         type: string
+        #         description: teste input
+        #         required: true
+    # push:
+        # branches: ["main", "feature/*","release/*"]
+        # branches: ["main", "feature/*",]
+        # branches-ignore:["release"]
+        # paths-ignore:
+        # paths:
+        #     - "src/**"
+        # tags:
+        #     - v*
+# jobs:
+#     teste:
+#         permissions: write-all
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: funcao contains
+#               run: echo "${{contains(inputs.valor_string, github.actor)}}"
+#             - name: visualizar input
+#               run: echo "${{inputs.valor_string}}"
+#             - name: visualizar actor
+#               run: echo "${{github.actor}}"
+#             - name: Funcao format
+#               run: "echo ${{ format('Formato Srting: {0} - Formato number: {1} - Formato Boolean: {2}', inputs.valor_string, inputs.valor_numerico, inputs.valor_boolean) }}"
+#             - name: Funcao Json
+#               run: echo "${{ toJson(github) }}"
+        # steps:
+        #     - name: Operação de string
+        #       run: echo "${{ github.actor == inputs.valor_string}}"
+        #     - name: Operacao com number
+        #       run: echo "${{ inputs.valor_numerico > 20}}"
+        #     - name: Operacao boolean
+        #       run: echo "${{ !inputs.valor_boolean }}"
+    # teste-workflo:
+    #     permissions: write-all
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - name: Action de teste
+    #           run: echo "Action executada apenas em main e fatures"
+            # - name: Alteracao do teste
+            #   uses: actions/github-script@v6
+            #   with:
+            #     script: |
+            #         github.rest.issues.createComment({
+            #             issue_number: context.issue.number,
+            #             owner: context.repo.owner,
+            #             repo: context.repo.repo,
+            #             body: 'Adcionando um comentário aqui sobre o PR'
+            #         })
+
